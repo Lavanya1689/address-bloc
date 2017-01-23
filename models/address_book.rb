@@ -48,4 +48,13 @@ class AddressBook
       end
       return nil
     end
+
+    def interative_search(name)
+      @entries.each do |entry|
+        if entry.name == name
+          return entry
+        end
+      end
+      return nil
+    end
 end
