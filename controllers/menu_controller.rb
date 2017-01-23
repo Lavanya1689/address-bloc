@@ -14,36 +14,42 @@ class MenuController
         puts "2 - Create an entry"
         puts "3 - Search for an entry"
         puts "4 - Import entries from a CSV"
-        puts "5 - Exit"
+        puts "5 - Delete all entries"
+        puts "6 - Exit"
         print "Enter your selection: "
 
         selection = gets.to_i
         case selection
             when 1
-            system "clear"
-            view_all_entries
-            main_menu
+              system "clear"
+              view_all_entries
+              main_menu
             when 2
-            system "clear"
-            create_entry
-            main_menu
+              system "clear"
+              create_entry
+              main_menu
             when 3
-            system "clear"
-            search_entries
-            main_menu
+              system "clear"
+              search_entries
+              main_menu
             when 4
-            system "clear"
-            read_csv
-            main_menu
+              system "clear"
+              read_csv
+              main_menu
             when 5
-            puts "Good-bye!"
+              system "clear"
+              @address_book.demolish
+              puts "All entries deleted"
+              main_menu
+            when 6
+              puts "Good-bye!"
             # #8
             exit(0)
             # #9
             else
-            system "clear"
-            puts "Sorry, that is not a valid input"
-            main_menu
+              system "clear"
+              puts "Sorry, that is not a valid input"
+              main_menu
         end
     end
 
@@ -88,7 +94,7 @@ class MenuController
       end
     end
 
-    def search_submenu
+    def search_submenu(entry)
       puts "/nd - delete the entry"
       puts "e - edit the entry"
       puts "m - return to main menu"
