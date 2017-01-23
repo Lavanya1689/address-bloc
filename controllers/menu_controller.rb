@@ -2,12 +2,12 @@ require_relative '../models/address_book'
 
 class MenuController
     attr_reader :address_book
-    
+
     def initialize
         puts "this is menu controller"
         @address_book = AddressBook.new
     end
-    
+
     def main_menu
         puts "Main Menu - #{address_book.entries.count} entries"
         puts "1 - View all entries"
@@ -16,7 +16,7 @@ class MenuController
         puts "4 - Import entries from a CSV"
         puts "5 - Exit"
         print "Enter your selection: "
-        
+
         selection = gets.to_i
         case selection
             when 1
@@ -46,18 +46,18 @@ class MenuController
             main_menu
         end
     end
-    
+
     def view_all_entries
         address_book.entries.each do |entry|
             system "clear"
             puts entry.to_s
             entry_submenu(entry)
         end
-        
+
         system "clear"
         puts "End of entries"
     end
-    
+
     def create_entry
         system "clear"
         puts "New AddressBloc Entry"
@@ -68,25 +68,25 @@ class MenuController
         print "Email: "
         email = gets.chomp
         address_book.add_entry(name, phone, email)
-        
+
         system "clear"
         puts "New entry created"
     end
-    
+
     def search_entries
     end
-    
+
     def read_csv
     end
-    
+
     def entry_submenu(entry)
         puts "n - next entry"
         puts "d - delete entry"
         puts "e - edit this entry"
         puts "m - return to main menu"
-        
+
         selection = gets.chomp
-        
+
         case selection
 
             when "n"
